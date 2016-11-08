@@ -5,14 +5,17 @@
          <div class="panel-body">
             <div class="form-group">
                <div class="col-sm-2">
-                  <input type="text" class="form-control" ng-model="query" placeholder="Search"/>
+                  <input type="text" class="form-control" ng-model="queryText" placeholder="Search Name"/>
+              
                </div>
                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-default">
-                     <input name="name" value="name" type="radio" ng-model="charOrder"/>Nome
+                  
+                  <label class="btn btn-default active"   ng-click="toggleSelection()">
+                     <input type="radio" ng-model="filterSelection"/> Name
                   </label>
-                  <label class="btn btn-default">
-                     <input name="name_real" value="name_real" type="radio" ng-model="charOrder"/>Real Nome
+                  
+                  <label class="btn btn-default"  ng-click="toggleSelection()">
+                     <input  type="radio" ng-model="filterSelection"  /> Real Name
                   </label>
                </div>
             </div>
@@ -21,13 +24,14 @@
    </form>
 
    <ul class="personagensLista list-group">
-      <li class="list-group-item" ng-repeat="item in characters | filter: query | orderBy:charOrder:direction">
+
+      <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter ">
          <div class="row">
             <div class="col-md-3">
                <img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
             </div>
             <div class="col-md-9">
-               <h2>{{item.name}} - {{item.name_real}}</h2>
+               <h2>{{item.name| uppercase}} - {{item.name_real}}</h2>
                <p>{{item.history}}</p>
             </div>
          </div>
