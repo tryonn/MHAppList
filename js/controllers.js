@@ -3,16 +3,19 @@ var characterControllers = angular.module('characterControllers', []);
 characterControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
     $http.get('js/characters.json').success(function(data) {
         $scope.characters = data;
-        $scope.filterSelection = 'name';
+        //$scope.filterSelection.value = 'name';
+        $scope.filterSelection = {text : 'NAME',value: 'name'};
 
 
 
     });
     $scope.toggleSelection = function() {
-        if ($scope.filterSelection === 'name') {
-            $scope.filterSelection = 'name_real';
+        if ($scope.filterSelection.value === 'name') {
+            $scope.filterSelection = {text:'Real Name', value:'real_name'}  
+            
         } else {
-            $scope.filterSelection = 'name';
+        	$scope.filterSelection = {text:'Name', value:'name'}  
+         
         }
 
 
@@ -23,10 +26,10 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
             return true;
         } else {
 
-            if ($scope.filterSelection === 'name' && item.name.toLowerCase().indexOf($scope.queryText.toLowerCase()) != -1) {
+            if ($scope.filterSelection.value === 'name' && item.name.toLowerCase().indexOf($scope.queryText.toLowerCase()) != -1) {
                 return true;
             }
-            if ($scope.filterSelection === 'name_real' && item.name_real.toLowerCase().indexOf($scope.queryText.toLowerCase()) != -1) {
+            if ($scope.filterSelection.value === 'real_name' && item.real_name.toLowerCase().indexOf($scope.queryText.toLowerCase()) != -1) {
                 return true;
             }
 

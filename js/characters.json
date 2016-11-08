@@ -3,37 +3,37 @@
     {
       "name_img"  : "luke_cage_1.png",
       "name"      : "Luke Cage",
-      "name_real" : "Carl Lucas",
+      "real_name" : "Carl Lucas",
       "history"   : "While serving prison time for a crime he didn't commit, former gang member Carl Lucas volunteered for an experiment that gave him enhanced strength and unbreakable skin. He promptly used his new abilities to escape prison, returning to his boyhood streets of Harlem. Rather than returning to crime, he took the name Luke Cage and became a mercenary 'hero for hire,' using his powers to help anyone who could afford his asking price. Eventually cleared of his criminal charges, Cage has distinguished himself in various superhero groups (including, most recently, the New Avengers), but in the end, he's nobody's man but his own."
     },
     {
       "name_img"  : "Ultron_0.png",
       "name"      : "Ultron",
-      "name_real" : "Ultron",
+      "real_name" : "Ultron",
       "history"   : "It was a cold day in December when Ultron became self-aware. Hank Pym had no idea exactly what consequences the machine’s sentience would unleash on the world. But before the brilliant Avenger could act, Ultron rebelled. Not just against its creator, but against all organic life. Over time, Ultron has upgraded and rebuilt itself continually while pushing the evolutionary boundaries of synthetic life. Each step brings Ultron closer to perfection. But Earth’s mightiest heroes, the Avengers, have always pulled the plug on Ultron’s campaigns. Now Ultron’s prime directive has been updated, taking this machine’s unlimited functionality to unstoppable levels."
     },
     {
       "name_img"  : "wolverine_2.png",
       "name"      : "Wolverine",
-      "name_real" : "James 'Logan' Howlett",
+      "real_name" : "James 'Logan' Howlett",
       "history"   : "The man called Logan had already lived a long and violent life when he was kidnapped from his black ops team by a secret government program called Weapon X. In a high-tech lab deep in the Canadian Rockies, scientists bonded the unbreakable metal adamantium to Logan's bones, relying on his mutant healing factor to keep the experiment from killing him. But Logan escaped the Weapon X program, and before too long drew the attention of Professor Charles Xavier, who recruited him to the X-Men as Wolverine. Despite the objections of those who saw him as more trouble than he was worth, Xavier saw Logan's inner nobility. Wolverine constantly fights to keep his savage berserker side in check, but no matter how hard he tries, it's usually just a matter of time before he pops his claws and goes to work."
     },
     {
       "name_img"  : "pmarvel-spiderman.png",
       "name"      : "Spider-Man",
-      "name_real" : "Peter Parker",
+      "real_name" : "Peter Parker",
       "history"   : "When he was bitten by a radioactive spider, high-school student Peter Parker gained a suite of powers reminiscent of a spider, including agility, wall-crawling, and the ability to sense danger (his trademark 'spider-sense'). When Peter learned that his beloved Uncle Ben had been murdered by a thief that Peter himself had selfishly allowed to escape, he realized that with his new powers also came a new obligation of responsibility to use them for good.Since that day, Spider-Man has fought criminals and super-villains while enduring a constant barrage of negative press, a stream of personal losses, and the occasional crisis of confidence. Somehow he manages to maintain a positive attitude, and rarely lacks for a humorous quip when battling bad guys."
     },
     {
       "name_img"  : "punisher_2.png",
       "name"      : "Punisher",
-      "name_real" : "Frank Castle",
+      "real_name" : "Frank Castle",
       "history"   : "A picnic in the park turned to tragedy when Frank Castle's family was shot by mobsters. The only survivor of the brutal execution, Castle decided to avenge his family by taking the law into his own hands. Castle's extensive military training and total lack of remorse make him an extremely efficient vigilante. Armed with military-grade weaponry, Castle is prepared to continue his bloody work until every criminal alive has been punished."
     },
     {
       "name_img"  : "thor_2.png",
       "name"      : "Thor",
-      "name_real" : "Thor Odinson",
+      "real_name" : "Thor Odinson",
       "history"   : "Thor is the Norse god of thunder and the son of Odin All-Father, ruler of Asgard. He wields the mystic hammer Mjolnir, which allows him to fly and fire bolts of lightning. Thor was a founding member of the Avengers and frequently battles as one of their number. At times, Thor has used the secret identity of Donald Blake to walk among mortals, but he always returns to the halls of Asgard to hoist a tankard with his fellow gods."
     }
   ]
