@@ -2,10 +2,14 @@ body{
 	background-color: black;
 }
 .list-group-item{
-	background-color: #596c59;
-	color: #000000;
+	background-color: #192436;
+	color: #F5B17E;
 	font-size: 20px;
 	font-family: Verdana,"Times New Roman", Georgia, Serif;
+}
+.panel-body{
+background-color: #192333;
+
 }
 h1{
 	text-align: center;
