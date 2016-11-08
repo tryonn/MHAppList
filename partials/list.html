@@ -1,13 +1,33 @@
 <div class="container">
    <h1>MHAppList</h1>
+   <form id="formCharacter" class="form">
+      <div class="panel panel-default">
+         <div class="panel-body">
+            <div class="form-group">
+               <div class="col-sm-2">
+                  <input type="text" class="form-control" ng-model="query" placeholder="Search"/>
+               </div>
+               <div class="btn-group" data-toggle="buttons">
+                  <label class="btn btn-default">
+                     <input name="name" value="name" type="radio" ng-model="charOrder"/>Nome
+                  </label>
+                  <label class="btn btn-default">
+                     <input name="name_real" value="name_real" type="radio" ng-model="charOrder"/>Real Nome
+                  </label>
+               </div>
+            </div>
+         </div>
+      </div>
+   </form>
+
    <ul class="personagensLista list-group">
-      <li class="list-group-item" ng-repeat="item in characters">
+      <li class="list-group-item" ng-repeat="item in characters | filter: query | orderBy:charOrder:direction">
          <div class="row">
             <div class="col-md-3">
                <img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
             </div>
             <div class="col-md-9">
-               <h2>{{item.name}}</h2>
+               <h2>{{item.name}} - {{item.name_real}}</h2>
                <p>{{item.history}}</p>
             </div>
          </div>
