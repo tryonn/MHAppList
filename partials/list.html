@@ -11,11 +11,7 @@
                <div class="btn-group" data-toggle="buttons">
                   
                   <label class="btn btn-default active"   ng-click="toggleSelection()">
-                     <input type="radio" ng-model="filterSelection.value"/> Name
-                  </label>
-                  
-                  <label class="btn btn-default"  ng-click="toggleSelection()">
-                     <input  type="radio" ng-model="filterSelection.value"  /> Real Name
+                     <input type="radio" ng-model="filterSelection.value"/> {{ filterSelection.text }}
                   </label>
                </div>
             </div>
@@ -25,7 +21,7 @@
 
    <ul class="personagensLista list-group">
 
-      <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter ">
+      <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : order">
          <div class="row">
             <div class="col-md-3">
                <img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
