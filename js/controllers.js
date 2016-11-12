@@ -4,7 +4,7 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
     $http.get('js/characters.json').success(function(data) {
 
         $scope.characters = data;
-        $scope.filterSelection = {text : 'Nome',value: 'name'};
+        $scope.filterSelection = {text : 'Nome', value: 'name'};
         $scope.order;
 
     });

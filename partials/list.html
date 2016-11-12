@@ -1,36 +1,48 @@
 <div class="container">
-   <h1>MHAppList</h1>
-   <form id="formCharacter" class="form">
-      <div class="panel panel-default">
-         <div class="panel-body">
-            <div class="form-group">
-               <div class="col-sm-2">
-                  <input type="text" class="form-control" ng-model="queryText" placeholder="Search {{filterSelection.text}}"/>
-              
-               </div>
-               <div class="btn-group" data-toggle="buttons">
-                  
-                  <label class="btn btn-default active"   ng-click="toggleSelection()">
-                     <input type="radio" ng-model="filterSelection.value"/> {{ filterSelection.text }}
-                  </label>
-               </div>
-            </div>
-         </div>
-      </div>
-   </form>
+	<h1>MHAppList</h1>
+	<form id="formCharacter" class="form">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<input type="text" class="form-control" ng-model="queryText" placeholder="Search {{filterSelection.text}}" />
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="toggleSelection()" ng-model="filterSelection.value">
+										{{ filterSelection.text }}
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="control-label"> 
+								<input type="radio" ng-model="direction" name="direction" checked /> crescente
+							</label> 
+							<label class="control-label"> 
+								<input type="radio" ng-model="direction" name="direction" value="reverse" /> Decrescente
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 
-   <ul class="personagensLista list-group">
+	<ul class="personagensLista list-group">
 
-      <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : order">
-         <div class="row">
-            <div class="col-md-3">
-               <img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
-            </div>
-            <div class="col-md-9">
-               <h2>{{item.name| uppercase}} - {{item.real_name}}</h2>
-               <p>{{item.history}}</p>
-            </div>
-         </div>
-      </li>
-   </ul>
+		<li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : filterSelection.value : direction">
+			<div class="row">
+				<div class="col-md-3">
+					<img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
+				</div>
+				<div class="col-md-9">
+					<h2>{{item.name| uppercase}} - {{item.real_name}}</h2>
+					<p>{{item.history}}</p>
+				</div>
+			</div>
+		</li>
+	</ul>
 </div>
