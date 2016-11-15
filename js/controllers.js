@@ -6,6 +6,7 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
         $scope.characters = data;
         $scope.filterSelection = {text : 'Nome', value: 'name'};
         $scope.order;
+        $scope.msgDelete;
 
     });
 
@@ -41,7 +42,9 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
     }
 
     $scope.deleteItem = function(item){
+        $scope.showDiv = !$scope.showDiv;
         $scope.characters.splice($scope.characters.indexOf(item), 1);
+        $scope.msgDelete = item.name + " Deletado com sucesso";
     }
 
 
