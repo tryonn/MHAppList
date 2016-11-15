@@ -8,6 +8,7 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
         $scope.order;
 
     });
+
     $scope.toggleSelection = function() {
         if ($scope.filterSelection.value === 'name') {
 
@@ -23,8 +24,6 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
         	$scope.filterSelection = {text:'Nome', value:'name'};
             $scope.order = $scope.filterSelection.value;
         }
-
-
     }
 
     $scope.queryFilter = function(item) {
@@ -39,6 +38,10 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
             }
         }
         return false;
+    }
+
+    $scope.deleteItem = function(item){
+        $scope.characters.splice($scope.characters.indexOf(item), 1);
     }
 
 
