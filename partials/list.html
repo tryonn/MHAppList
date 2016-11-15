@@ -35,6 +35,12 @@
 
 		<li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : filterSelection.value : direction">
 			<div class="row">
+				<div class="panel panel-body">
+					<a class="btn btn-danger divDelete" ng-click="deleteItem(item)">
+						<i class="icon-trash icon-white"></i> 
+						Delete
+					</a>
+				</div>
 				<div class="col-md-3">
 					<img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
 				</div>
@@ -42,6 +48,7 @@
 					<h2>{{item.name| uppercase}} - {{item.real_name}}</h2>
 					<p>{{item.history}}</p>
 				</div>
+				
 			</div>
 		</li>
 	</ul>
