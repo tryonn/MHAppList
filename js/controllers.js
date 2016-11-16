@@ -1,6 +1,6 @@
-var characterControllers = angular.module('characterControllers', []);
+var characterControllers = angular.module('characterControllers', ['angularModalService', 'ngAnimate']);
 
-characterControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
+characterControllers.controller('ListController', ['$scope','ModalService', '$http', function($scope,ModalService, $http) {
     $http.get('js/characters.json').success(function(data) {
 
         $scope.characters = data;
@@ -50,5 +50,27 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
         console.log('Testing ' + item.name);
     }
 
+$scope.showCustom = function(item) {
+
+    ModalService.showModal({
+      templateUrl: "partials/details.html",
+      controller: "CustomController"
+    }).then(function(modal) {
+console.log(item);
+    
+      modal.close.then(function(result) {
+        
+      });
+    });
+
+  };
+
+
+
+}]);
+
+characterControllers.controller('CustomController', ['$scope', 'close', function($scope, close) {
+
+  $scope.close = close;
 
 }]);
