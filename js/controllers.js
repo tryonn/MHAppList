@@ -1,5 +1,12 @@
 var characterControllers = angular.module('characterControllers', ['angularModalService', 'ngAnimate']);
 
+characterControllers.controller('CustomController', ['$scope', 'close', function($scope, close) {
+
+  $scope.close = close;
+
+}]);
+
+
 characterControllers.controller('ListController', ['$scope','ModalService', '$http', function($scope,ModalService, $http) {
     $http.get('js/characters.json').success(function(data) {
 
@@ -56,11 +63,13 @@ $scope.showCustom = function(item) {
       templateUrl: "partials/details.html",
       controller: "CustomController"
     }).then(function(modal) {
-console.log(item);
-    
-      modal.close.then(function(result) {
+        console.log(modal);
+
+    modal.close.then(function(result) {
         
-      });
+    });
+    
+ 
     });
 
   };
@@ -69,8 +78,3 @@ console.log(item);
 
 }]);
 
-characterControllers.controller('CustomController', ['$scope', 'close', function($scope, close) {
-
-  $scope.close = close;
-
-}]);
