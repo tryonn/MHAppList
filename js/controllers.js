@@ -46,6 +46,9 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
         $scope.characters.splice($scope.characters.indexOf(item), 1);
         $scope.msgDelete = item.name + " Deletado com sucesso";
     }
+       $scope.viewItem = function(item){
+        console.log('Testing ' + item.name);
+    }
 
 
 }]);
