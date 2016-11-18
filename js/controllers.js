@@ -1,10 +1,25 @@
-var characterControllers = angular.module('characterControllers', []);
+var characterControllers = angular.module('characterControllers', ['angularModalService', 'ngAnimate']);
 
-characterControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
+characterControllers.controller('CustomController', ['$scope', 'close', 'item', function($scope, close, item) {
+
+    $scope.item = item;
+
+    $scope.close = function(result) {
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
+
+
+}]);
+
+
+characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', function($scope, ModalService, $http) {
     $http.get('js/characters.json').success(function(data) {
 
         $scope.characters = data;
-        $scope.filterSelection = {text : 'Nome', value: 'name'};
+        $scope.filterSelection = {
+            text: 'Nome',
+            value: 'name'
+        };
         $scope.order;
         $scope.msgDelete;
 
@@ -13,16 +28,25 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
     $scope.toggleSelection = function() {
         if ($scope.filterSelection.value === 'name') {
 
-            $scope.filterSelection = {text:'Nome Real', value:'real_name'};
+            $scope.filterSelection = {
+                text: 'Nome Real',
+                value: 'real_name'
+            };
             $scope.order = $scope.filterSelection.value;
 
         } else if ($scope.filterSelection.value === 'real_name') {
 
-            $scope.filterSelection = {text:' Qualquer Texto', value:'$'};
+            $scope.filterSelection = {
+                text: ' Qualquer Texto',
+                value: '$'
+            };
             $scope.queryFilter = $scope.queryText;
 
         } else {
-        	$scope.filterSelection = {text:'Nome', value:'name'};
+            $scope.filterSelection = {
+                text: 'Nome',
+                value: 'name'
+            };
             $scope.order = $scope.filterSelection.value;
         }
     }
@@ -41,14 +65,56 @@ characterControllers.controller('ListController', ['$scope', '$http', function($
         return false;
     }
 
-    $scope.deleteItem = function(item){
+    $scope.deleteItem = function(item) {
         $scope.showDiv = !$scope.showDiv;
         $scope.characters.splice($scope.characters.indexOf(item), 1);
         $scope.msgDelete = item.name + " Deletado com sucesso";
     }
-       $scope.viewItem = function(item){
+    $scope.viewItem = function(item) {
         console.log('Testing ' + item.name);
     }
+
+    $scope.showCustom = function(item) {
+
+        ModalService.showModal({
+            templateUrl: "partials/details.html",
+            controller: "CustomController",
+            inputs: {
+                item: item,
+
+            }
+        }).then(function(modal) {
+            console.log(modal);
+
+            modal.close.then(function(result) {
+
+            });
+
+
+        });
+
+    };
+
+    $scope.showConfirmation = function(item) {
+
+        ModalService.showModal({
+            templateUrl: "partials/confirmation.html",
+            controller: "CustomController",
+            inputs: {
+                item: item,
+
+            }
+        }).then(function(modal) {
+            console.log('teste' + item.name);
+            modal.element.modal(item);
+            modal.close.then(function(result) {
+
+            });
+        });
+
+    };
+
+
 
 
 }]);
