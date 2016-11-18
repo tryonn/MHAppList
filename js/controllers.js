@@ -2,7 +2,11 @@ var characterControllers = angular.module('characterControllers', ['angularModal
 
 characterControllers.controller('CustomController', ['$scope', 'close', function($scope, close) {
 
-  $scope.close = close;
+console.log('CustomController');
+ $scope.close = function(result) {
+      close(result, 500); // close, but give 500ms for bootstrap to animate
+  };
+
 
 }]);
 
@@ -73,6 +77,22 @@ $scope.showCustom = function(item) {
     });
 
   };
+
+$scope.confirmation = function(item) {
+
+    ModalService.showModal({
+      templateUrl: "partials/confirmation.html",
+      controller: "CustomController"
+    }).then(function(modal) {
+console.log('teste' + item.name);
+      modal.element.modal(item);
+      modal.close.then(function(result) {
+       
+      });
+    });
+
+  };
+
 
 
 

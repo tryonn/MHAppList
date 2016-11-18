@@ -44,7 +44,7 @@
       <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : filterSelection.value : direction">
          <div class="row">
             <div class="btn-group pull-right actions">
-               <a class="btn btn-danger" ng-click="deleteItem(item)">
+               <a class="btn btn-danger" ng-click="confirmation(item)">
                <i class="icon-trash icon-white"></i> 
                Delete
                </a>   
