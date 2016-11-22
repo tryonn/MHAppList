@@ -104,7 +104,12 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
    function deleteItem (item) {
         $scope.showDiv = true;
         $scope.characters.splice($scope.characters.indexOf(item), 1);
-        $scope.msgDelete = item.name + " Deletado com sucesso";
+        $scope.msgDelete = item.name + " has been successfully removed";
+
+        $('.js-delete-msg').fadeTo(2000, 500).slideUp(500, function(){
+               
+            $('.js-delete-msg').slideUp(500);
+        });   
     }
 
 
