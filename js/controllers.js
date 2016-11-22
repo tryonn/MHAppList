@@ -29,25 +29,17 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
         if ($scope.filterSelection.value === 'name') {
 
             $scope.filterSelection = {
-                text: 'Nome Real',
+                text: 'Real Name',
                 value: 'real_name'
             };
             $scope.order = $scope.filterSelection.value;
 
-        } else if ($scope.filterSelection.value === 'real_name') {
-
+        } else{
             $scope.filterSelection = {
-                text: ' Qualquer Texto',
-                value: '$'
-            };
-            $scope.queryFilter = $scope.queryText;
+            text: 'Name',
+            value: 'name'
+        };
 
-        } else {
-            $scope.filterSelection = {
-                text: 'Nome',
-                value: 'name'
-            };
-            $scope.order = $scope.filterSelection.value;
         }
     }
 
@@ -65,11 +57,7 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
         return false;
     }
 
-    $scope.deleteItem = function(item) {
-        $scope.showDiv = !$scope.showDiv;
-        $scope.characters.splice($scope.characters.indexOf(item), 1);
-        $scope.msgDelete = item.name + " Deletado com sucesso";
-    }
+ 
     $scope.viewItem = function(item) {
         console.log('Testing ' + item.name);
     }
@@ -108,13 +96,16 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
             console.log('teste' + item.name);
             modal.element.modal(item);
             modal.close.then(function(result) {
-
+                deleteItem(item);
             });
         });
 
     };
-
-
+   function deleteItem (item) {
+        $scope.showDiv = true;
+        $scope.characters.splice($scope.characters.indexOf(item), 1);
+        $scope.msgDelete = item.name + " Deletado com sucesso";
+    }
 
 
 }]);
