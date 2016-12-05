@@ -9,6 +9,10 @@ mhApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/list.html',
     controller: 'ListController'
   }).
+  when('/new', {
+    templateUrl : 'partials/new.html',
+    controller: 'NewController'
+  }).
   otherwise({
     redirectTo: '/list'
   });

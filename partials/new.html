@@ -1,0 +1,40 @@
+<div class="container">
+    <br></br>
+    <form id="formCharacter" class="form" ng-submit="submeter()">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            	New
+                <a href="#/list" class="pull-right" >list</a> 
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label for="realName">Real Name</label>
+                        <input type="text" class="form-control" id="realName" ng-model="hero.realName" placeholder="Real Name"></input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="hero.name"></input>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="nameImg">Name img</label>
+                        <input type="text" class="form-control" id="nameImg" placeholder="Name IMG" ng-model="hero.nameImg"></input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label for="history">History</label>
+                        <textarea class="form-control" rows="3" id="history" placeholder="History" maxlength="500" ng-model="hero.history"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button class="btn btn-primary" type="submit" value="Save">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
