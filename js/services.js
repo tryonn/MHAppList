@@ -2,14 +2,22 @@ angular.module('characterControllers').factory('myService', ['$http', function($
 
     var that = this;
 
-    //this.heroes = [];
+    var heroes = [];
 
-    $http.get('js/characters.json').success(function(data) {
-        this.heroes = data;
-    });
+    /*    $http.get('js/characters.json').success(function(data) {
+            this.heroes = data;
+        }); */
 
     function set(data) {
-        heroes.push(data);
+        if (data.length > 1 && heroes.length == 0) {
+            heroes = data;
+
+            console.log("Adicionado lista, " + heroes);
+        } else {
+            heroes.push(data);
+
+            console.log("Adicionado um, " + heroes);
+        }
     }
 
     function get() {

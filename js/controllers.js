@@ -16,27 +16,23 @@ characterControllers.controller('NewController', ['$scope', '$http', 'myService'
     $scope.hero = {};
 
     $scope.submeter = function() {
-        console.log(myService.get());
+        //console.log(myService.get());
 
         myService.set($scope.hero);
 
-        console.log(myService.get());
+        //console.log(myService.get());
     }
     
 }]);
 
 
 characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', 'myService' ,function($scope, ModalService, $http, myService) {
-    //$http.get('js/characters.json').success(function(data) {
+    $http.get('js/characters.json').success(function(data) {
         
-        //myService.set(data);
-
-        console.log(myService.get());
+        myService.set(data);    
 
         $scope.characters = myService.get();
-
-        //$scope.characters = data;
-
+       
         $scope.filterSelection = {
             text: 'Nome',
             value: 'name'
@@ -44,7 +40,7 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
         $scope.order;
         $scope.msgDelete;
 
-    //});
+    });
 
     $scope.toggleSelection = function() {
         if ($scope.filterSelection.value === 'name') {
