@@ -1,6 +1,5 @@
-
-
 <div class="container">
+<<<<<<< HEAD
    <h1>MHAppList</h1>
    <div class="alert alert-success alert-dismissible js-delete-msg" role="alert" ng-show="showDiv">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -20,48 +19,74 @@
                            <button type="button" class="btn btn-default" ng-click="toggleSelection()" ng-model="filterSelection.value">
                            {{ filterSelection.text }}
                            </button>
+=======
+    <h1>MHAppList</h1>
+    <div class="alert alert-success alert-dismissible" role="alert" ng-show="showDiv">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{ msgDelete }}</strong>
+    </div>
+    <form id="formCharacter" class="form">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="btn-group pull-right">
+                                <a href="#/new" class="btn btn-primary btn-xm">Novo</a>
+                            </div>
+>>>>>>> de8182f228ee4238fc2b2bc16af1b2037fcaf2af
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-sm-6">
-                     <label class="control-label"> 
-                     <input type="radio" ng-model="direction" name="direction" checked /> 
-                     <span class="sortText">ASC</span>
-                     </label> 
-                     <label class="control-label"> 
-                     <input type="radio" ng-model="direction" name="direction" value="reverse" /> 
-                     <span class="sortText">DESC</span>
-                     </label>
-                  </div>
-               </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="queryText" placeholder="Search {{filterSelection.text}}" />
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="toggleSelection()" ng-model="filterSelection.value">
+                                        {{ filterSelection.text }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label">
+                                <input type="radio" ng-model="direction" name="direction" checked />
+                                <span class="sortText">ASC</span>
+                            </label>
+                            <label class="control-label">
+                                <input type="radio" ng-model="direction" name="direction" value="reverse" />
+                                <span class="sortText">DESC</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </form>
-   <ul class="personagensLista list-group">
-      <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : filterSelection.value : direction">
-         <div class="row">
-            <div class="btn-group pull-right actions">
-               <a class="btn btn-danger" ng-click="showConfirmation(item)">
-               <i class="icon-trash icon-white"></i> 
-               Delete
-               </a>   
-               <a class="btn btn-warning" ng-click="showCustom(item)">
-                  <i class="icon-trash icon-white"></i> 
-               View Details
-               </a>
+        </div>
+    </form>
+    <ul class="personagensLista list-group">
+        <li class="list-group-item" ng-repeat="item in characters | filter: queryFilter | orderBy : filterSelection.value : direction">
+            <div class="row">
+                <div class="btn-group pull-right actions">
+                    <a class="btn btn-danger" ng-click="showConfirmation(item)">
+                        <i class="icon-trash icon-white"></i> Delete
+                    </a>
+                    <a class="btn btn-warning" ng-click="showCustom(item)">
+                        <i class="icon-trash icon-white"></i> View Details
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
+                </div>
+                <div class="col-md-9">
+                    <h2>{{item.name| uppercase}} - {{item.real_name}}</h2>
+                    <p>{{item.history | limitTo:200}} {{item.history.length > 150 ? '&hellip;' : '' }}</p>
+                </div>
             </div>
-            <div class="col-md-3">
-               <img ng-src="img/{{item.name_img}}" class="img-circle" alt="Photo of {{item.name}}">
-            </div>
-            <div class="col-md-9">
-               <h2>{{item.name| uppercase}} - {{item.real_name}}</h2>
-               <p>{{item.history | limitTo:200}} {{item.history.length > 150 ? '&hellip;' : '' }}</p>
-            </div>
-         </div>
-      </li>
-   </ul>
+        </li>
+    </ul>
 </div>
-

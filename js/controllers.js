@@ -11,11 +11,28 @@ characterControllers.controller('CustomController', ['$scope', 'close', 'item', 
 
 }]);
 
+characterControllers.controller('NewController', ['$scope', '$http', 'myService', function($scope, $http, myService){
 
-characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', function($scope, ModalService, $http) {
+    $scope.hero = {};
+
+    $scope.submeter = function() {
+        myService.set($scope.hero);
+
+        $scope.hero = '';
+    }
+    
+}]);
+
+
+characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', 'myService' ,function($scope, ModalService, $http, myService) {
     $http.get('js/characters.json').success(function(data) {
+        
+        //seta no serviço todos os heroes - na primeira vez...
+        //refatorar [no futuro] para que a "requisicao" seja feita em um serviço
+        myService.set(data);    
 
-        $scope.characters = data;
+        $scope.characters = myService.get();
+       
         $scope.filterSelection = {
             text: 'Nome',
             value: 'name'
@@ -57,7 +74,18 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
         return false;
     }
 
+<<<<<<< HEAD
  
+=======
+    //função reescrita dentro da response do modal. abaixo
+    /*$scope.deleteItem = function(item) {
+        console.log("item : " + item);
+        $scope.showDiv = !$scope.showDiv;
+        $scope.characters.splice($scope.characters.indexOf(item), 1);
+        $scope.msgDelete = item.name + " Deletado com sucesso";
+    }*/
+
+>>>>>>> de8182f228ee4238fc2b2bc16af1b2037fcaf2af
     $scope.viewItem = function(item) {
         console.log('Testing ' + item.name);
     }
@@ -93,10 +121,14 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
 
             }
         }).then(function(modal) {
-            console.log('teste' + item.name);
             modal.element.modal(item);
             modal.close.then(function(result) {
+<<<<<<< HEAD
                 deleteItem(item);
+=======
+                //funcao remover...
+                myService.remove(item);
+>>>>>>> de8182f228ee4238fc2b2bc16af1b2037fcaf2af
             });
         });
 
@@ -111,6 +143,5 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
             $('.js-delete-msg').slideUp(500);
         });   
     }
-
 
 }]);
