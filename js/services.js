@@ -4,19 +4,13 @@ angular.module('characterControllers').factory('myService', ['$http', function($
 
     var heroes = [];
 
-    /*    $http.get('js/characters.json').success(function(data) {
-            this.heroes = data;
-        }); */
-
     function set(data) {
-        if (data.length > 1 && heroes.length == 0) {
+        if (Array.isArray(data) && heroes.length == 0) {
             heroes = data;
-
-            console.log("Adicionado lista, " + heroes);
-        } else {
+        } else if (!Array.isArray(data)) {
+            console.log("item >>> " + data);
             heroes.push(data);
-
-            console.log("Adicionado um, " + heroes);
+            console.log("heroes >>> " + heroes);
         }
     }
 
@@ -24,12 +18,14 @@ angular.module('characterControllers').factory('myService', ['$http', function($
         return heroes;
     }
 
+    function remove(data) {
+        heroes.splice(heroes.indexOf(data), 1);
+    }
+
     return {
         set: set,
         get: get,
+        remove: remove,
     }
 
 }]);
-
-
-// Criar outro service que faz uma requisicao do json, retorna todos, e nesse ele apenas faz os metodos de acesso.

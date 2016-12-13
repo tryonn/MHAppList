@@ -16,11 +16,9 @@ characterControllers.controller('NewController', ['$scope', '$http', 'myService'
     $scope.hero = {};
 
     $scope.submeter = function() {
-        //console.log(myService.get());
-
         myService.set($scope.hero);
 
-        //console.log(myService.get());
+        $scope.hero = '';
     }
     
 }]);
@@ -29,6 +27,8 @@ characterControllers.controller('NewController', ['$scope', '$http', 'myService'
 characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', 'myService' ,function($scope, ModalService, $http, myService) {
     $http.get('js/characters.json').success(function(data) {
         
+        //seta no serviço todos os heroes - na primeira vez...
+        //refatorar [no futuro] para que a "requisicao" seja feita em um serviço
         myService.set(data);    
 
         $scope.characters = myService.get();
@@ -82,11 +82,14 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
         return false;
     }
 
-    $scope.deleteItem = function(item) {
+    //função reescrita dentro da response do modal. abaixo
+    /*$scope.deleteItem = function(item) {
+        console.log("item : " + item);
         $scope.showDiv = !$scope.showDiv;
         $scope.characters.splice($scope.characters.indexOf(item), 1);
         $scope.msgDelete = item.name + " Deletado com sucesso";
-    }
+    }*/
+
     $scope.viewItem = function(item) {
         console.log('Testing ' + item.name);
     }
@@ -122,10 +125,10 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
 
             }
         }).then(function(modal) {
-            console.log('teste' + item.name);
             modal.element.modal(item);
             modal.close.then(function(result) {
-
+                //funcao remover...
+                myService.remove(item);
             });
         });
 
