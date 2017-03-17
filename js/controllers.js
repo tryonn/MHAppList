@@ -11,11 +11,28 @@ characterControllers.controller('CustomController', ['$scope', 'close', 'item', 
 
 }]);
 
+characterControllers.controller('NewController', ['$scope', '$http', 'myService', function($scope, $http, myService) {
 
-characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', function($scope, ModalService, $http) {
+    $scope.hero = {};
+
+    $scope.submeter = function() {
+        myService.set($scope.hero);
+
+        $scope.hero = '';
+    }
+
+}]);
+
+
+characterControllers.controller('ListController', ['$scope', 'ModalService', '$http', 'myService', function($scope, ModalService, $http, myService) {
     $http.get('js/characters.json').success(function(data) {
 
-        $scope.characters = data;
+        //seta no serviço todos os heroes - na primeira vez...
+        //refatorar [no futuro] para que a "requisicao" seja feita em um serviço
+        myService.set(data);
+
+        $scope.characters = myService.get();
+
         $scope.filterSelection = {
             text: 'Nome',
             value: 'name'
@@ -34,11 +51,11 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
             };
             $scope.order = $scope.filterSelection.value;
 
-        } else{
+        } else {
             $scope.filterSelection = {
-            text: 'Name',
-            value: 'name'
-        };
+                text: 'Name',
+                value: 'name'
+            };
 
         }
     }
@@ -57,7 +74,15 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
         return false;
     }
 
- 
+    //função reescrita dentro da response do modal. abaixo
+    /*$scope.deleteItem = function(item) {
+        console.log("item : " + item);
+        $scope.showDiv = !$scope.showDiv;
+        $scope.characters.splice($scope.characters.indexOf(item), 1);
+        $scope.msgDelete = item.name + " Deletado com sucesso";
+    }*/
+
+
     $scope.viewItem = function(item) {
         console.log('Testing ' + item.name);
     }
@@ -93,24 +118,24 @@ characterControllers.controller('ListController', ['$scope', 'ModalService', '$h
 
             }
         }).then(function(modal) {
-            console.log('teste' + item.name);
             modal.element.modal(item);
             modal.close.then(function(result) {
-                deleteItem(item);
+                //funcao remover...
+                myService.remove(item);
             });
         });
 
     };
-   function deleteItem (item) {
+
+    function deleteItem(item) {
         $scope.showDiv = true;
         $scope.characters.splice($scope.characters.indexOf(item), 1);
         $scope.msgDelete = item.name + " has been successfully removed";
 
-        $('.js-delete-msg').fadeTo(2000, 500).slideUp(500, function(){
-               
-            $('.js-delete-msg').slideUp(500);
-        });   
-    }
+        $('.js-delete-msg').fadeTo(2000, 500).slideUp(500, function() {
 
+            $('.js-delete-msg').slideUp(500);
+        });
+    }
 
 }]);
